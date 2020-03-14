@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
+import cutController from './app/controllers/cutController';
+
 const routes = new Router();
 
-routes.get('/', (req, res) => {
-  return res.json({ message: 'Hello Beck' });
-});
+routes.post('/', cutController.store);
 
 export default routes;
