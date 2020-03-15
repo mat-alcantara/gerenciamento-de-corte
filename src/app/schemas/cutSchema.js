@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const cutSchema = new Schema({
-  // TODO: Implementar a sequencia de cortes
   // TODO: Implementar o sistema de datas
   // TODO: Implementar o sistema de IDs
   name: {
