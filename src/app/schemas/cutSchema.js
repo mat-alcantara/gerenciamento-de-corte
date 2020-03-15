@@ -1,3 +1,5 @@
+import cutDetailsSchema from './cutDetailsSchema';
+
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -21,14 +23,7 @@ const cutSchema = new Schema({
     required: true,
     enum: ['frade', 'japuiba'],
   },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-  // delivery_date: {
-  //   type: Date,
-  // },
-  // cuts: String,
+  cuts: [cutDetailsSchema],
 });
 
 export default mongoose.model('Cuts', cutSchema);
