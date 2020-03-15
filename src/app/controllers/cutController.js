@@ -23,26 +23,57 @@ class CutController {
         .oneOf(['frade', 'japuiba'])
         .required(),
       cuts: Yup.array().required(),
+      status: Yup.string()
+        .oneOf(['produçao', 'liberado para transporte', 'entregue'])
+        .required(),
+      // deliveryDate: Yup.date().required(),
     });
 
-    const { code, name, payment, telephone, store, cuts } = req.body;
+    // Armazena as constantes do req.body referentes aos dados a serem armazenados
+    // no banco de dados
+    const {
+      code,
+      status,
+      name,
+      payment,
+      telephone,
+      store,
+      cuts,
+      ps,
+    } = req.body;
 
+    // TODO: Implementar um sistema de data de entrega
+    // const deliveryDate = new Date();
+
+    // Confere se os dados estão válidos de acordo com o schema do Yup
     if (
-      !(await schema.isValid({ code, name, payment, telephone, store, cuts }))
+      !(await schema.isValid({
+        code,
+        status,
+        name,
+        payment,
+        telephone,
+        store,
+        cuts,
+      }))
     ) {
+      // Retorna um erro caso os dados não sejam validados
       return res.status(400).json({ error: 'Validation fails' });
     }
 
     // Armazena os dados no banco de dados
     const Cut = await Cuts.create({
       code,
+      status,
       name,
       payment,
       telephone,
       store,
       cuts,
+      ps,
     });
 
+    // Retorna um JSON com os dados armazenados no banco de dados
     return res.json(Cut);
   }
 }
