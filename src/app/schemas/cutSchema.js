@@ -5,8 +5,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const cutSchema = new Schema({
-  // TODO: Implementar o sistema de datas
-  // TODO: Implementar o sistema de IDs
+  code: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -22,6 +24,18 @@ const cutSchema = new Schema({
     required: true,
     enum: ['frade', 'japuiba'],
   },
+  date: {
+    type: Date, // 2002-12-09T00:00:00.000Z
+    default: Date.now,
+  },
+  deliveryDate: {
+    type: Date,
+    required: true,
+  },
+  /*
+    Utiliza um Schema diferente para detalhar cada peça do corte, 
+    além da possibilidade de adicionar várias peças diferentes em um array
+  */
   cuts: [cutDetailsSchema],
 });
 

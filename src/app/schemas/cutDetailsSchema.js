@@ -27,6 +27,10 @@ const cutDetailsSchema = mongoose.Schema(
       required: true,
     },
   },
+  /*
+    Desativa a utilização de Ids pois o schema será utilizado apenas como subdocument
+    em outra schema que já possui ids
+  */
   { _id: false }
 );
 
