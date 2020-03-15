@@ -15,7 +15,7 @@ const cutSchema = new Schema({
   },
   payment: {
     type: String,
-    enum: ['pago', 'parcialmente pago', 'receber na entrega'],
+    enum: ['pago', 'parcialmente pago', 'receber na entrega', 'orçamento'],
     required: true,
   },
   telephone: Number,
@@ -24,14 +24,14 @@ const cutSchema = new Schema({
     required: true,
     enum: ['frade', 'japuiba'],
   },
-  date: {
-    type: Date, // 2002-12-09T00:00:00.000Z
-    default: Date.now,
-  },
-  deliveryDate: {
-    type: Date,
-    required: true,
-  },
+  // date: {
+  //   type: Date, // 2002-12-09T00:00:00.000Z
+  //   default: Date.now,
+  // },
+  // deliveryDate: {
+  //   type: Date,
+  //   required: true,
+  // },
   /*
     Utiliza um Schema diferente para detalhar cada peça do corte, 
     além da possibilidade de adicionar várias peças diferentes em um array
